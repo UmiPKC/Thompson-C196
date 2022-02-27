@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_course_list.xml" value="0.18958333333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/activity_term_add.xml" value="0.35625" />
       </map>
     </option>
   </component>

@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.thompsonc196.Database.Repository;
+import com.example.thompsonc196.Entity.Assessment;
 import com.example.thompsonc196.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("term button!");
         Intent intent = new Intent(MainActivity.this, TermList.class);
         startActivity(intent);
+
     }
 
     public void onCourse(View v) {
@@ -32,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("assessment button!");
         Intent intent = new Intent(MainActivity.this, AssessList.class);
         startActivity(intent);
+        Repository repo = new Repository(getApplication());
+        Assessment assessment = new Assessment(1, "C196", "01/22/22", "01/22/22");
+        repo.insert(assessment);
     }
 }
 
