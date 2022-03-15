@@ -1,10 +1,16 @@
 package com.example.thompsonc196.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.thompsonc196.Database.Repository;
+import com.example.thompsonc196.Entity.Course;
 import com.example.thompsonc196.R;
+
+import java.util.List;
 
 public class CourseList extends AppCompatActivity {
 
@@ -12,5 +18,12 @@ public class CourseList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_list);
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        Repository repo = new Repository(getApplication());
+        List<Course> courses = repo.getAllCourses();
+        final CourseAdapter adapter = new CourseAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter.setCourses(courses);
     }
 }
