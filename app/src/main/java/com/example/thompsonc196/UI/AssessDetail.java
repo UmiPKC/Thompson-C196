@@ -43,12 +43,12 @@ public class AssessDetail extends AppCompatActivity {
         Assessment assessment;
         if (assessID == -1) {
             int newID = repo.getAllAssess().get(repo.getAllAssess().size() - 1).getAssessID() + 1;
-            assessment = new Assessment(newID, editTitle.getText().toString(), editStart.getText().toString(), editEnd.getText().toString());
-            repo.insert(assessment);
+            //assessment = new Assessment(newID, editTitle.getText().toString(), editStart.getText().toString(), editEnd.getText().toString());
+            //repo.insert(assessment);
         }
         else {
-            assessment = new Assessment(assessID, editTitle.getText().toString(), editStart.getText().toString(), editEnd.getText().toString());
-            repo.update(assessment);
+            //assessment = new Assessment(assessID, editTitle.getText().toString(), editStart.getText().toString(), editEnd.getText().toString());
+            //repo.update(assessment);
         }
     }
 }

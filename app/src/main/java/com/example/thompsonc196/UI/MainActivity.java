@@ -9,6 +9,7 @@ import android.view.View;
 import com.example.thompsonc196.Database.Repository;
 import com.example.thompsonc196.Entity.Assessment;
 import com.example.thompsonc196.Entity.Course;
+import com.example.thompsonc196.Entity.Term;
 import com.example.thompsonc196.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("term button!");
         Intent intent = new Intent(MainActivity.this, TermList.class);
         startActivity(intent);
+        Repository repo = new Repository(getApplication());
+        Term term = new Term(1, "Fall Term", "08/01/2022", "12/12/2022");
+        repo.insert(term);
 
     }
 
@@ -40,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, AssessList.class);
         startActivity(intent);
         Repository repo = new Repository(getApplication());
-        Assessment assessment = new Assessment(1, "C196 Performance", "01/22/22", "01/22/22");
-        repo.insert(assessment);
+        /*Assessment assessment = new Assessment(1, "C196 Performance", "01/22/22", "01/22/22");
+        repo.insert(assessment);*/
     }
 }
 

@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.thompsonc196.Database.Repository;
 import com.example.thompsonc196.Entity.Assessment;
@@ -25,5 +27,13 @@ public class AssessList extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter.setAssess(assessments);
+
+    }
+
+    public void onAdd(View v) {
+        System.out.println("Add course!");
+        Intent intent = new Intent(AssessList.this, AssessAdd.class);
+        startActivity(intent);
     }
 }
+

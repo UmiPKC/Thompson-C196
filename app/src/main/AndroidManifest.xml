@@ -11,13 +11,16 @@
         android:theme="@style/Theme.ThompsonC196">
         <activity
             android:name=".UI.TermAdd"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".UI.TermList"/>
         <activity
             android:name=".UI.CourseAdd"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".UI.CourseList"/>
         <activity
             android:name=".UI.AssessAdd"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".UI.AssessList"/>
         <activity
             android:name=".UI.AssessDetail"
             android:exported="false"
