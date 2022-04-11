@@ -31,8 +31,8 @@ public class AssessAdapter extends RecyclerView.Adapter<AssessAdapter.AssessView
                     Intent intent = new Intent(context, AssessDetail.class);
                     intent.putExtra("id", current.getAssessID());
                     intent.putExtra("title", current.getAssessTitle());
-                    intent.putExtra("start", current.getAssessStart());
-                    intent.putExtra("end", current.getAssessEnd());
+                    intent.putExtra("start", current.getAssessStart().getTime());
+                    intent.putExtra("end", current.getAssessEnd().getTime());
                     context.startActivity(intent);
                 }
             });

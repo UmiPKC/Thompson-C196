@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 import com.example.thompsonc196.Database.Repository;
 import com.example.thompsonc196.Entity.Assessment;
@@ -31,6 +32,8 @@ public class AssessAdd extends AppCompatActivity {
     EditText titleText;
     EditText startText;
     EditText endText;
+    RadioButton objectiveRadio;
+    RadioButton performanceRadio;
     Button saveBtn;
 
     @Override
@@ -38,6 +41,8 @@ public class AssessAdd extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assess_add);
         titleText = findViewById(R.id.titleText);
+        objectiveRadio = findViewById(R.id.objectiveRadio);
+        performanceRadio = findViewById(R.id.performanceRadio);
         saveBtn = findViewById(R.id.saveBtn);
 
         startText = findViewById(R.id.startText);
@@ -80,6 +85,54 @@ public class AssessAdd extends AppCompatActivity {
             }
         });
 
+        /*
+        onClick for Save Button.
+         */
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int newID = 0;
+                if (repo.getAllAssess().size() == 0) {
+                    newID = 1;
+                }
+                else {
+                    newID = repo.getAllAssess().get(repo.getAllAssess().size() - 1).getAssessID() + 1;
+                }
+
+                String title = titleText.getText().toString();
+
+                String type = null;
+                if (objectiveRadio.isChecked()) {
+                    type = "Objective";
+                }
+                else if (performanceRadio.isChecked()) {
+                    type = "Performance";
+                }
+
+                String myFormat = "MM/dd/yy";
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                String startString = startText.getText().toString();
+                String endString = endText.getText().toString();
+                Date finalStartDate = null;
+                Date finalEndDate = null;
+                try {
+                    finalStartDate = sdf.parse(startString);
+                }
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    finalEndDate = sdf.parse(endString);
+                }
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                Assessment assessment = new Assessment(newID, title, finalStartDate, finalEndDate, type);
+                repo.insert(assessment);
+                System.out.println(assessment);
+            }
+        });
     }
 
     private void updateLabelStart() {
@@ -94,6 +147,8 @@ public class AssessAdd extends AppCompatActivity {
         endText.setText(sdf.format(myCalendarEnd.getTime()));
     }
 
+
+    /*
     public void onSave(View v) {
         int newID = repo.getAllAssess().get(repo.getAllAssess().size() - 1).getAssessID() + 1;
         String title = titleText.getText().toString();
@@ -121,7 +176,9 @@ public class AssessAdd extends AppCompatActivity {
 
         Assessment assessment = new Assessment(newID, title, finalStartDate, finalEndDate);
         repo.insert(assessment);
-        Intent intent = new Intent(AssessAdd.this, AssessList.class);
-        startActivity(intent);
+        System.out.println(assessment);
+        //Intent intent = new Intent(AssessAdd.this, AssessList.class);
+        //startActivity(intent);
     }
+     */
 }

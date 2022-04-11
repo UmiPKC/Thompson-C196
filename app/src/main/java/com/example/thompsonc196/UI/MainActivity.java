@@ -12,6 +12,11 @@ import com.example.thompsonc196.Entity.Course;
 import com.example.thompsonc196.Entity.Term;
 import com.example.thompsonc196.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -44,8 +49,29 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, AssessList.class);
         startActivity(intent);
         Repository repo = new Repository(getApplication());
-        /*Assessment assessment = new Assessment(1, "C196 Performance", "01/22/22", "01/22/22");
-        repo.insert(assessment);*/
+
+        /*String myFormat = "MM/dd/yy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        String startString = "01/26/22";
+        String endString = "01/27/22";
+        Date finalStartDate = null;
+        Date finalEndDate = null;
+        try {
+            finalStartDate = sdf.parse(startString);
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+        try {
+            finalEndDate = sdf.parse(endString);
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Assessment assessment = new Assessment(1, "C196 Performance", finalStartDate, finalEndDate);
+        repo.insert(assessment);
+
+         */
     }
 }
 

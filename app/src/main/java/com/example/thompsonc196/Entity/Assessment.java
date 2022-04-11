@@ -16,7 +16,7 @@ public class Assessment {
     //private String assessEnd;
     private Date assessStart;
     private Date assessEnd;
-    //private String type; //either Objective or Performance
+    private String type; //either Objective or Performance
     //private Enumerated type; Objective Assessment or Performance Assessment
 
     /*public Assessment(int assessID, String assessTitle, String assessStart, String assessEnd) {
@@ -25,11 +25,12 @@ public class Assessment {
         this.assessStart = assessStart;
         this.assessEnd = assessEnd;
     }*/
-    public Assessment(int assessID, String assessTitle, Date assessStart, Date assessEnd) {
+    public Assessment(int assessID, String assessTitle, Date assessStart, Date assessEnd, String type) {
         this.assessID = assessID;
         this.assessTitle = assessTitle;
         this.assessStart = assessStart;
         this.assessEnd = assessEnd;
+        this.type = type;
     }
 
     public int getAssessID() {
@@ -48,22 +49,6 @@ public class Assessment {
         this.assessTitle = assessTitle;
     }
 
-    /*public String getAssessStart() {
-        return assessStart;
-    }
-
-    public void setAssessStart(String assessStart) {
-        this.assessStart = assessStart;
-    }
-
-    public String getAssessEnd() {
-        return assessEnd;
-    }
-
-    public void setAssessEnd(String assessEnd) {
-        this.assessEnd = assessEnd;
-    } */
-
     public Date getAssessStart() {
         return assessStart;
     }
@@ -80,6 +65,14 @@ public class Assessment {
         this.assessEnd = assessEnd;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         return "Assessment{" +
@@ -89,4 +82,20 @@ public class Assessment {
                 ", assessEnd='" + assessEnd + '\'' +
                 '}';
     }
+
+    /*public String getAssessStart() {
+        return assessStart;
+    }
+
+    public void setAssessStart(String assessStart) {
+        this.assessStart = assessStart;
+    }
+
+    public String getAssessEnd() {
+        return assessEnd;
+    }
+
+    public void setAssessEnd(String assessEnd) {
+        this.assessEnd = assessEnd;
+    } */
 }
