@@ -4,9 +4,11 @@ import android.app.Application;
 
 import com.example.thompsonc196.DAO.AssessDAO;
 import com.example.thompsonc196.DAO.CourseDAO;
+import com.example.thompsonc196.DAO.InstructorDAO;
 import com.example.thompsonc196.DAO.TermDAO;
 import com.example.thompsonc196.Entity.Assessment;
 import com.example.thompsonc196.Entity.Course;
+import com.example.thompsonc196.Entity.Instructor;
 import com.example.thompsonc196.Entity.Term;
 
 import java.util.List;
@@ -18,9 +20,12 @@ public class Repository {
     private AssessDAO mAssessDAO;
     private CourseDAO mCourseDAO;
     private TermDAO mTermDAO;
+    private InstructorDAO mInstructorDAO;
     private List<Assessment> mAllAssess;
     private List<Course> mAllCourses;
     private List<Term> mAllTerms;
+    private List<Assessment> mCourseAssess;
+    private List<Instructor> mAllInstructors;
 
     private static int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
@@ -30,6 +35,7 @@ public class Repository {
         mAssessDAO = db.assessDAO();
         mCourseDAO = db.courseDAO();
         mTermDAO = db.termDAO();
+        mInstructorDAO = db.instructorDAO();
     }
 
     public List<Assessment> getAllAssess() {
@@ -44,6 +50,20 @@ public class Repository {
             e.printStackTrace();
         }
         return mAllAssess;
+    }
+
+    public List<Assessment> getCourseAssess(int courseID) {
+        databaseExecutor.execute(()-> {
+            mCourseAssess = mAssessDAO.getCourseAssess(courseID);
+        });
+
+        try {
+            Thread.sleep(1000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();;
+        }
+        return mCourseAssess;
     }
 
     public List<Course> getAllCourses() {
@@ -72,6 +92,20 @@ public class Repository {
             e.printStackTrace();
         }
         return mAllTerms;
+    }
+
+    public List<Instructor> getAllInstructors() {
+        databaseExecutor.execute(()-> {
+            mAllInstructors = mInstructorDAO.getAllInstructors();
+        });
+
+        try {
+            Thread.sleep(1000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return mAllInstructors;
     }
 
     //overload CRUD functions with Course and Term versions
@@ -104,6 +138,19 @@ public class Repository {
     public void insert(Term term) {
         databaseExecutor.execute(()->{
            mTermDAO.insert(term);
+        });
+
+        try {
+            Thread.sleep(1000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void insert(Instructor instructor) {
+        databaseExecutor.execute(()->{
+            mInstructorDAO.insert(instructor);
         });
 
         try {
@@ -150,6 +197,18 @@ public class Repository {
         }
     }
 
+    public void update(Instructor instructor) {
+        databaseExecutor.execute(()->{
+            mInstructorDAO.update(instructor);
+        });
+        try {
+            Thread.sleep(1000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void delete(Assessment assessment) {
         databaseExecutor.execute(()->{
             mAssessDAO.delete(assessment);
@@ -177,6 +236,18 @@ public class Repository {
     public void delete(Term term) {
         databaseExecutor.execute(()->{
             mTermDAO.delete(term);
+        });
+        try {
+            Thread.sleep(1000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(Instructor instructor) {
+        databaseExecutor.execute(()->{
+            mInstructorDAO.delete(instructor);
         });
         try {
             Thread.sleep(1000);

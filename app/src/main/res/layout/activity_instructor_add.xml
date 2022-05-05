@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.AssessAdd">
+    tools:context=".UI.InstructorAdd">
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10px"
+        android:layout_marginBottom="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,78 +18,54 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Assessment Title:" />
+                android:text="Instructor Name:" />
 
             <EditText
-                android:id="@+id/titleText"
+                android:id="@+id/nameText"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Title" />
+                android:text="Name" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Start Date:" />
+                android:text="Instructor Phone:" />
 
             <EditText
-                android:id="@+id/startText"
+                android:id="@+id/phoneText"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:ems="10"
-                android:focusable="false"
                 android:inputType="textPersonName"
-                android:text="Start Date" />
+                android:text="Phone Number" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="End Date:" />
+                android:text="Instructor Email" />
 
             <EditText
-                android:id="@+id/endText"
+                android:id="@+id/emailText"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:ems="10"
-                android:focusable="false"
                 android:inputType="textPersonName"
-                android:text="End Date" />
-
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <RadioButton
-                    android:id="@+id/objectiveRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="Objective Assessment" />
-
-                <RadioButton
-                    android:id="@+id/performanceRadio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Performance Assessment" />
-            </RadioGroup>
+                android:text="Email Address" />
 
             <Button
                 android:id="@+id/saveBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Save"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
+                android:text="Save" />
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

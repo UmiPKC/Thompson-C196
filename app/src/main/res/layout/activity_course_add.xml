@@ -7,20 +7,22 @@
     tools:context=".UI.CourseAdd">
 
     <ScrollView
-        android:layout_width="401dp"
-        android:layout_height="834dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10px"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Course Title:" />
@@ -28,13 +30,12 @@
             <EditText
                 android:id="@+id/titleText"
                 android:layout_width="match_parent"
-                android:layout_height="59dp"
+                android:layout_height="60dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Title" />
 
             <TextView
-                android:id="@+id/textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Start Date:" />
@@ -42,13 +43,13 @@
             <EditText
                 android:id="@+id/startText"
                 android:layout_width="match_parent"
-                android:layout_height="59dp"
+                android:layout_height="60dp"
                 android:ems="10"
+                android:focusable="false"
                 android:inputType="textPersonName"
                 android:text="Start Date" />
 
             <TextView
-                android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="End Date:" />
@@ -56,49 +57,114 @@
             <EditText
                 android:id="@+id/endText"
                 android:layout_width="match_parent"
-                android:layout_height="59dp"
+                android:layout_height="60dp"
                 android:ems="10"
+                android:focusable="false"
                 android:inputType="textPersonName"
                 android:text="End Date" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Course Status:" />
+
+            <Spinner
+                android:id="@+id/statusSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Course Instructor:" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/instructorSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/instructorBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="onInstructor"
+                    android:text="New Instructor" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Assessments:" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/assessSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/addAssessBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="onAddAssess"
+                    android:text="Add Assessment" />
+
+                <Button
+                    android:id="@+id/newAssessBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="onNewAssess"
+                    android:text="New Assessment" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="308dp"
+                android:orientation="horizontal">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/selectAssessRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Notes" />
 
             <EditText
-                android:id="@+id/notesText"
                 android:layout_width="match_parent"
-                android:layout_height="59dp"
+                android:layout_height="60dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Notes (optional)" />
 
-            <LinearLayout
+            <Button
+                android:id="@+id/saveBtn"
                 android:layout_width="wrap_content"
-                android:layout_height="308dp"
-                android:orientation="horizontal">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/allAssessRecycler"
-                    android:layout_width="198dp"
-                    android:layout_height="match_parent" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/selectAssessRecycler"
-                    android:layout_width="205dp"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:onClick="onSave"
+                android:text="Save" />
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/saveBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:onClick="onSave"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

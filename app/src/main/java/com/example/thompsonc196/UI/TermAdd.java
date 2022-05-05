@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.thompsonc196.Database.Repository;
-import com.example.thompsonc196.Entity.Assessment;
 import com.example.thompsonc196.Entity.Course;
 import com.example.thompsonc196.Entity.Term;
 import com.example.thompsonc196.R;

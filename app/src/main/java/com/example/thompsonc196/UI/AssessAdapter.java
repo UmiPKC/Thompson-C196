@@ -33,6 +33,7 @@ public class AssessAdapter extends RecyclerView.Adapter<AssessAdapter.AssessView
                     intent.putExtra("title", current.getAssessTitle());
                     intent.putExtra("start", current.getAssessStart().getTime());
                     intent.putExtra("end", current.getAssessEnd().getTime());
+                    intent.putExtra("type", current.getType());
                     context.startActivity(intent);
                 }
             });

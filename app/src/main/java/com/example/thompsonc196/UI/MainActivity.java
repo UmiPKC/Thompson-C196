@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, CourseList.class);
         startActivity(intent);
         Repository repo = new Repository(getApplication());
-        Course course = new Course(1, "C485", "02/22/22", "03/22/22");
-        repo.insert(course);
+        //Course course = new Course(1, "C485", "02/22/22", "03/22/22");
+        //repo.insert(course);
     }
 
     public void onAssess(View v) {

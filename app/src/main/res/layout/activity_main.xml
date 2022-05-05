@@ -7,7 +7,6 @@
     tools:context=".UI.MainActivity">
 
     <Button
-        android:id="@+id/assessBtn"
         android:layout_width="160dp"
         android:layout_height="57dp"
         android:layout_marginStart="124dp"
@@ -29,7 +28,6 @@
         app:layout_constraintVertical_bias="0.255" />
 
     <Button
-        android:id="@+id/termBtn"
         android:layout_width="160dp"
         android:layout_height="64dp"
         android:layout_marginStart="156dp"
@@ -43,7 +41,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/courseBtn"
         android:layout_width="160dp"
         android:layout_height="59dp"
         android:layout_marginStart="124dp"

@@ -12,15 +12,19 @@
         <activity
             android:name=".UI.TermAdd"
             android:exported="false"
-            android:parentActivityName=".UI.TermList"/>
+            android:parentActivityName=".UI.TermList" />
         <activity
             android:name=".UI.CourseAdd"
             android:exported="false"
-            android:parentActivityName=".UI.CourseList"/>
+            android:parentActivityName=".UI.CourseList" />
         <activity
             android:name=".UI.AssessAdd"
             android:exported="false"
-            android:parentActivityName=".UI.AssessList"/>
+            android:parentActivityName=".UI.AssessList" />
+        <activity
+            android:name=".UI.InstructorAdd"
+            android:exported="false"
+            android:parentActivityName=".UI.CourseAdd" />
         <activity
             android:name=".UI.AssessDetail"
             android:exported="false"

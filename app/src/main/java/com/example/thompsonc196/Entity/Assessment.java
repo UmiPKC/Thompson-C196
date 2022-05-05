@@ -12,25 +12,19 @@ public class Assessment {
     @PrimaryKey(autoGenerate = true)
     private int assessID;
     private String assessTitle;
-    //private String assessStart;
-    //private String assessEnd;
     private Date assessStart;
     private Date assessEnd;
     private String type; //either Objective or Performance
-    //private Enumerated type; Objective Assessment or Performance Assessment
+    private int courseID;
 
-    /*public Assessment(int assessID, String assessTitle, String assessStart, String assessEnd) {
-        this.assessID = assessID;
-        this.assessTitle = assessTitle;
-        this.assessStart = assessStart;
-        this.assessEnd = assessEnd;
-    }*/
-    public Assessment(int assessID, String assessTitle, Date assessStart, Date assessEnd, String type) {
+    //courseID will be set to 0 by default when creating the assessment; gets changed when creating/editing Courses
+    public Assessment(int assessID, String assessTitle, Date assessStart, Date assessEnd, String type, int courseID) {
         this.assessID = assessID;
         this.assessTitle = assessTitle;
         this.assessStart = assessStart;
         this.assessEnd = assessEnd;
         this.type = type;
+        this.courseID = courseID;
     }
 
     public int getAssessID() {
@@ -73,14 +67,13 @@ public class Assessment {
         this.type = type;
     }
 
+    public int getCourseID() { return courseID; }
+
+    public void setCourseID(int courseID) { this.courseID = courseID; }
+
     @Override
     public String toString() {
-        return "Assessment{" +
-                "assessID=" + assessID +
-                ", assessTitle='" + assessTitle + '\'' +
-                ", assessStart='" + assessStart + '\'' +
-                ", assessEnd='" + assessEnd + '\'' +
-                '}';
+        return this.assessTitle;
     }
 
     /*public String getAssessStart() {

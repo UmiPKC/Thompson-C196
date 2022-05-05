@@ -3,7 +3,6 @@ package com.example.thompsonc196.UI;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +12,6 @@ import android.widget.RadioButton;
 
 import com.example.thompsonc196.Database.Repository;
 import com.example.thompsonc196.Entity.Assessment;
-import com.example.thompsonc196.Entity.Term;
 import com.example.thompsonc196.R;
 
 import java.text.ParseException;
@@ -128,7 +126,9 @@ public class AssessAdd extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                Assessment assessment = new Assessment(newID, title, finalStartDate, finalEndDate, type);
+                int courseID = 0;
+
+                Assessment assessment = new Assessment(newID, title, finalStartDate, finalEndDate, type, courseID);
                 repo.insert(assessment);
                 System.out.println(assessment);
             }
