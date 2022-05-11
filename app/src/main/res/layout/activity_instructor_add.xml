@@ -20,12 +20,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Instructor Name:" />
+                android:text="Instructor Name:"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/nameText"
@@ -33,12 +36,14 @@
                 android:layout_height="60dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name" />
+                android:text="Name"
+                android:textSize="24sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Instructor Phone:" />
+                android:text="Instructor Phone:"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/phoneText"
@@ -46,12 +51,14 @@
                 android:layout_height="60dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Phone Number" />
+                android:text="Phone Number"
+                android:textSize="24sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Instructor Email" />
+                android:text="Instructor Email"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/emailText"
@@ -59,7 +66,8 @@
                 android:layout_height="60dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Email Address" />
+                android:text="Email Address"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/saveBtn"

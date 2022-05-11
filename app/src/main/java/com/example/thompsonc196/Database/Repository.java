@@ -25,7 +25,9 @@ public class Repository {
     private List<Course> mAllCourses;
     private List<Term> mAllTerms;
     private List<Assessment> mCourseAssess;
+    private List<Course> mTermCourses;
     private List<Instructor> mAllInstructors;
+    private Instructor selectedInstructor;
 
     private static int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
@@ -61,7 +63,7 @@ public class Repository {
             Thread.sleep(1000);
         }
         catch (InterruptedException e) {
-            e.printStackTrace();;
+            e.printStackTrace();
         }
         return mCourseAssess;
     }
@@ -80,7 +82,21 @@ public class Repository {
         return mAllCourses;
     }
 
-    public List<Term> getmAllTerms() {
+    public List<Course> getTermCourses(int termID) {
+        databaseExecutor.execute(()-> {
+            mTermCourses = mCourseDAO.getTermCourses(termID);
+        });
+
+        try {
+            Thread.sleep(1000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return mTermCourses;
+    }
+
+    public List<Term> getAllTerms() {
         databaseExecutor.execute(()-> {
             mAllTerms = mTermDAO.getAllTerms();
         });
@@ -108,6 +124,19 @@ public class Repository {
         return mAllInstructors;
     }
 
+    public Instructor getInstructorByID(int instructorID) {
+        databaseExecutor.execute(()-> {
+            selectedInstructor = mInstructorDAO.getInstructorByID(instructorID);
+        });
+
+        try {
+            Thread.sleep(1000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return selectedInstructor;
+    }
     //overload CRUD functions with Course and Term versions
     public void insert(Assessment assessment) {
         databaseExecutor.execute(()->{

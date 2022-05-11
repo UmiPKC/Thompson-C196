@@ -3,16 +3,18 @@ package com.example.thompsonc196.Entity;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
+
 @Entity(tableName = "terms")
 public class Term {
 
     @PrimaryKey(autoGenerate = true)
     private int termID;
     private String termTitle;
-    private String termStart;
-    private String termEnd;
+    private Date termStart;
+    private Date termEnd;
 
-    public Term(int termID, String termTitle, String termStart, String termEnd) {
+    public Term(int termID, String termTitle, Date termStart, Date termEnd) {
         this.termID = termID;
         this.termTitle = termTitle;
         this.termStart = termStart;
@@ -35,29 +37,24 @@ public class Term {
         this.termTitle = termTitle;
     }
 
-    public String getTermStart() {
+    public Date getTermStart() {
         return termStart;
     }
 
-    public void setTermStart(String termStart) {
+    public void setTermStart(Date termStart) {
         this.termStart = termStart;
     }
 
-    public String getTermEnd() {
+    public Date getTermEnd() {
         return termEnd;
     }
 
-    public void setTermEnd(String termEnd) {
+    public void setTermEnd(Date termEnd) {
         this.termEnd = termEnd;
     }
 
     @Override
     public String toString() {
-        return "Term{" +
-                "termID=" + termID +
-                ", termTitle='" + termTitle + '\'' +
-                ", termStart='" + termStart + '\'' +
-                ", termEnd='" + termEnd + '\'' +
-                '}';
+        return this.termTitle;
     }
 }

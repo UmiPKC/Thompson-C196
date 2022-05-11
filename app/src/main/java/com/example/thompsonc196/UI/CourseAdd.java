@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -37,22 +40,18 @@ public class CourseAdd extends AppCompatActivity {
     EditText endText;
     final Calendar myCalendarStart = Calendar.getInstance();
     final Calendar myCalendarEnd = Calendar.getInstance();
-    DatePickerDialog.OnDateSetListener startDate;
-    DatePickerDialog.OnDateSetListener endDate;
+    DatePickerDialog.OnDateSetListener startDatePicker;
+    DatePickerDialog.OnDateSetListener endDatePicker;
     Spinner statusSpinner;
     Spinner instructorSpinner;
-    Spinner assessSpinner;
-    Button addAssessBtn;
-    Button newAssessBtn;
+    EditText noteText;
     Button saveBtn;
 
     int id;
     String title;
-    String start;
-    String end;
     String status;
     int instructorID;
-    Assessment selectedAssess;
+    String notes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,13 +62,10 @@ public class CourseAdd extends AppCompatActivity {
         endText = findViewById(R.id.endText);
         statusSpinner = findViewById(R.id.statusSpinner);
         instructorSpinner = findViewById(R.id.instructorSpinner);
-        assessSpinner = findViewById(R.id.assessSpinner);
-        addAssessBtn = findViewById(R.id.addAssessBtn);
-        newAssessBtn = findViewById(R.id.newAssessBtn);
+        noteText = findViewById(R.id.noteText);
         saveBtn = findViewById(R.id.saveBtn);
 
-        startText = findViewById(R.id.startText);
-        startDate = new DatePickerDialog.OnDateSetListener() {
+        startDatePicker = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 myCalendarStart.set(Calendar.YEAR, year);
@@ -83,13 +79,12 @@ public class CourseAdd extends AppCompatActivity {
         startText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(CourseAdd.this, startDate, myCalendarStart.get(Calendar.YEAR),
+                new DatePickerDialog(CourseAdd.this, startDatePicker, myCalendarStart.get(Calendar.YEAR),
                         myCalendarStart.get(Calendar.MONTH), myCalendarStart.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 
-        endText = findViewById(R.id.endText);
-        endDate = new DatePickerDialog.OnDateSetListener() {
+        endDatePicker = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 myCalendarEnd.set(Calendar.YEAR, year);
@@ -103,7 +98,7 @@ public class CourseAdd extends AppCompatActivity {
         endText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(CourseAdd.this, endDate, myCalendarEnd.get(Calendar.YEAR),
+                new DatePickerDialog(CourseAdd.this, endDatePicker, myCalendarEnd.get(Calendar.YEAR),
                         myCalendarEnd.get(Calendar.MONTH), myCalendarEnd.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
@@ -129,53 +124,6 @@ public class CourseAdd extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
-            }
-        });
-
-        //Assessments RecyclerView V2
-        RecyclerView selectAssessRecyclerView = findViewById(R.id.selectAssessRecycler);
-        List<Assessment> selectAssessments ;
-        Assessment selectAssessments = List.of();
-        final AssessAdapter assessAdapter = new AssessAdapter(this);
-        selectAssessRecyclerView.setAdapter(assessAdapter);
-        selectAssessRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        assessAdapter.setAssess(selectAssessments);
-
-        //Assessment Spinner dropdown menu
-        List<Assessment> assessmentList = repo.getAllAssess();
-        ArrayAdapter<Assessment> assessmentArrayAdapter = new ArrayAdapter<Assessment>(this, android.R.layout.simple_spinner_item, assessmentList);
-        assessmentArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        assessSpinner.setAdapter(assessmentArrayAdapter);
-
-        //get assess spinner data, put set assess' courseID, put into RecyclerView
-        assessSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                selectedAssess = assessmentList.get(i);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        //Assessments RecyclerView
-        /*
-        RecyclerView selectAssessRecyclerView = findViewById(R.id.selectAssessRecycler);
-        Repository repo = new Repository(getApplication());
-        List<Assessment> assessments = repo.getAllAssess();
-        final AssessAdapter adapter = new AssessAdapter(this);
-        selectAssessRecyclerView.setAdapter(adapter);
-        selectAssessRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter.setAssess(assessments);
-
-         */
-
-        addAssessBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectAssessments.add(selectedAssess);
             }
         });
 
@@ -212,29 +160,25 @@ public class CourseAdd extends AppCompatActivity {
                 }
 
                 status = statusSpinner.getSelectedItem().toString();
-                updateAssessment(selectedAssess, id); //add courseID to assessment
-                Course course = new Course(id, title, finalStartDate, finalEndDate, status, instructorID);
+
+                if (noteText.getText().toString().equals(null)) {
+                    notes = null;
+                }
+                else {
+                    notes = noteText.getText().toString();
+                }
+
+                //termID
+                int termID = 0;
+                Course course = new Course(id, title, finalStartDate, finalEndDate, status, instructorID, notes, termID);
                 repo.insert(course);
 
+                //Leave activity and go back to CourseList
                 Intent intent = new Intent(CourseAdd.this, CourseList.class);
                 startActivity(intent);
             }
         });
     }
-
-    /*
-    public void onSave(View v) {
-        int newID = repo.getAllCourses().get(repo.getAllCourses().size() - 1).getCourseID() + 1;
-        String title = titleText.getText().toString();
-        String start = startText.getText().toString();
-        String end = endText.getText().toString();
-        Course course = new Course(newID, title, start, end, "stats");
-        repo.insert(course);
-        Intent intent = new Intent(CourseAdd.this, CourseList.class);
-        startActivity(intent);
-    }
-
-     */
 
     private void updateLabelStart() {
         String myFormat = "MM/dd/yy";
@@ -248,27 +192,9 @@ public class CourseAdd extends AppCompatActivity {
         endText.setText(sdf.format(myCalendarEnd.getTime()));
     }
 
-    private void updateAssessment(Assessment assessment, int courseID) {
-        int id = assessment.getAssessID();
-        String title = assessment.getAssessTitle();
-        Date start = assessment.getAssessStart();
-        Date end = assessment.getAssessEnd();
-        String type = assessment.getType();
-
-        Assessment updatedAssessment = new Assessment(id, title, start, end, type, courseID);
-        repo.update(updatedAssessment);
-    }
-
     public void onInstructor(View v) {
         Intent intent = new Intent(CourseAdd.this, InstructorAdd.class);
         startActivity(intent);
     }
 
-    public void onAddAssess(View v) {
-
-    }
-
-    public void onNewAssess(View v) {
-
-    }
 }

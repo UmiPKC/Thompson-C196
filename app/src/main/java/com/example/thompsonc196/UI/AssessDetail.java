@@ -1,14 +1,23 @@
 package com.example.thompsonc196.UI;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.example.thompsonc196.Database.Repository;
 import com.example.thompsonc196.Entity.Assessment;
@@ -33,7 +42,63 @@ public class AssessDetail extends AppCompatActivity {
     RadioButton objectiveRadio;
     RadioButton performanceRadio;
     Button saveBtn;
-    Button delBtn;
+
+    int assessID;
+    String title;
+    Date startDate;
+    Date endDate;
+    String type;
+    int courseID;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_bar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.del:
+                courseID = getIntent().getIntExtra("courseID", -1);
+                Assessment assessment = new Assessment(assessID, title, startDate, endDate, type, courseID);
+                repo.delete(assessment);
+                Toast.makeText(this, "Assessment has been deleted.", Toast.LENGTH_SHORT).show();
+
+                //Leave activity and go back to CourseList
+                Intent intent = new Intent(AssessDetail.this, AssessList.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.setStartNotif:
+                String startMessage = "Assessment " + title + " starts today.";
+                Long triggerStart = startDate.getTime();
+                Intent startNotifIntent = new Intent(AssessDetail.this, MyReceiver.class);
+                startNotifIntent.putExtra("key", startMessage);
+                PendingIntent startSender = PendingIntent.getBroadcast(AssessDetail.this, MainActivity.numAlert++, startNotifIntent, PendingIntent.FLAG_IMMUTABLE);
+                AlarmManager startAlarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                startAlarmManager.set(AlarmManager.RTC_WAKEUP, triggerStart, startSender);
+
+                Toast.makeText(this, "Start date notification has been set.", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.setEndNotif:
+                String endMessage = "Assessment " + title + " ends today.";
+                Long triggerEnd = endDate.getTime();
+                Intent endNotifIntent = new Intent(AssessDetail.this, MyReceiver.class);
+                endNotifIntent.putExtra("key", endMessage);
+                PendingIntent endSender = PendingIntent.getBroadcast(AssessDetail.this, MainActivity.numAlert++, endNotifIntent, PendingIntent.FLAG_IMMUTABLE);
+                AlarmManager endAlarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                endAlarmManager.set(AlarmManager.RTC_WAKEUP, triggerEnd, endSender);
+
+                Toast.makeText(this, "End date notification has been set.", Toast.LENGTH_SHORT).show();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +111,6 @@ public class AssessDetail extends AppCompatActivity {
         objectiveRadio = findViewById(R.id.objectiveRadio);
         performanceRadio = findViewById(R.id.performanceRadio);
         saveBtn = findViewById(R.id.saveBtn);
-        delBtn = findViewById(R.id.delBtn);
-
-        int assessID;
-        String title;
-        Date startDate;
-        Date endDate;
-        String type;
 
         assessID = getIntent().getIntExtra("id", -1);
         title = getIntent().getStringExtra("title");
@@ -165,15 +223,20 @@ public class AssessDetail extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                int courseID = 0;
+                int courseID = getIntent().getIntExtra("courseID", -1);
                 Assessment assessment = new Assessment(assessID, title, finalStartDate, finalEndDate, type, courseID);
                 repo.update(assessment);
+
+                //Leave activity and go back to CourseList
+                Intent intent = new Intent(AssessDetail.this, AssessList.class);
+                startActivity(intent);
             }
         });
 
         /**
          * Delete button functionality
          */
+        /*
         delBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -181,6 +244,8 @@ public class AssessDetail extends AppCompatActivity {
                 repo.delete(assessment);
             }
         });
+
+         */
 
     }
 

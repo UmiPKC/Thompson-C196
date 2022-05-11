@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.thompsonc196.Database.Repository;
-import com.example.thompsonc196.Entity.Assessment;
 import com.example.thompsonc196.Entity.Term;
 import com.example.thompsonc196.R;
 
@@ -23,7 +22,7 @@ public class TermList extends AppCompatActivity {
         setContentView(R.layout.activity_term_list);
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         Repository repo = new Repository(getApplication());
-        List<Term> terms = repo.getmAllTerms();
+        List<Term> terms = repo.getAllTerms();
         final TermAdapter adapter = new TermAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -14,11 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.thompsonc196.Entity.Assessment;
 import com.example.thompsonc196.R;
 
+import java.util.Date;
 import java.util.List;
 
 public class AssessAdapter extends RecyclerView.Adapter<AssessAdapter.AssessViewHolder> {
     class AssessViewHolder extends RecyclerView.ViewHolder {
         private final TextView assessItemView;
+
         private AssessViewHolder(View assessView) {
             super(assessView);
             assessItemView = assessView.findViewById(R.id.textView2);
@@ -34,6 +36,7 @@ public class AssessAdapter extends RecyclerView.Adapter<AssessAdapter.AssessView
                     intent.putExtra("start", current.getAssessStart().getTime());
                     intent.putExtra("end", current.getAssessEnd().getTime());
                     intent.putExtra("type", current.getType());
+                    intent.putExtra("courseID", current.getCourseID());
                     context.startActivity(intent);
                 }
             });

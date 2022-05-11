@@ -13,22 +13,21 @@ public class Course {
     private String courseTitle;
     private Date courseStart;
     private Date courseEnd;
-    //private Emumerator status; in progress/completed/dropped/plan to take
     private String courseStatus;
     private int instructorID;
-    //private String instructorName;
-    //private String instructorPhone;
-    //private String instructorEmail;
+    private String courseNotes;
     private int termID; //presumably SQLite will generate term id
     //private ArrayList notes; Use a list to store notes?
 
-    public Course(int courseID, String courseTitle, Date courseStart, Date courseEnd, String courseStatus, int instructorID) {
+    public Course(int courseID, String courseTitle, Date courseStart, Date courseEnd, String courseStatus, int instructorID, String courseNotes, int termID) {
         this.courseID = courseID;
         this.courseTitle = courseTitle;
         this.courseStart = courseStart;
         this.courseEnd = courseEnd;
         this.courseStatus = courseStatus;
         this.instructorID = instructorID;
+        this.courseNotes = courseNotes;
+        this.termID = termID;
     }
 
     public int getCourseID() {
@@ -79,6 +78,14 @@ public class Course {
         this.instructorID = instructorID;
     }
 
+    public String getCourseNotes() {
+        return courseNotes;
+    }
+
+    public void setCourseNotes(String courseNotes) {
+        this.courseNotes = courseNotes;
+    }
+
     public int getTermID() {
         return termID;
     }
@@ -89,12 +96,7 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course{" +
-                "courseID=" + courseID +
-                ", courseTitle='" + courseTitle + '\'' +
-                ", courseStart='" + courseStart + '\'' +
-                ", courseEnd='" + courseEnd + '\'' +
-                '}';
+        return this.courseTitle;
     }
     /*
     public String getInstructorName() {

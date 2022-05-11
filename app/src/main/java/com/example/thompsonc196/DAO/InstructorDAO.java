@@ -25,4 +25,7 @@ public interface InstructorDAO {
 
     @Query("SELECT * FROM instructors ORDER BY instructorID ASC")
     List<Instructor> getAllInstructors();
+
+    @Query("SELECT * FROM instructors WHERE instructorID = :instructorID")
+    Instructor getInstructorByID(int instructorID);
 }

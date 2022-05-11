@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.thompsonc196.Entity.Assessment;
 import com.example.thompsonc196.Entity.Course;
 
 import java.util.List;
@@ -25,4 +26,7 @@ public interface CourseDAO {
 
     @Query("SELECT * FROM courses ORDER BY courseID ASC")
     List<Course> getAllCourses();
+
+    @Query("SELECT * FROM courses WHERE termID = :termID")
+    List<Course> getTermCourses(int termID);
 }

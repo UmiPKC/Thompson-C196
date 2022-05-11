@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/del"
+        android:icon="@drawable/ic_del_icon"
+        android:title="Delete"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/setStartNotif"
+        android:title="Set Start Date Notification"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/setEndNotif"
+        android:title="Set End Date Notification"
+        app:showAsAction="never" />
+</menu>

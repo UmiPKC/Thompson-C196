@@ -20,12 +20,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Course Title:" />
+                android:text="Course Title:"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/titleText"
@@ -33,12 +36,14 @@
                 android:layout_height="60dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Title" />
+                android:text="Title"
+                android:textSize="24sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Start Date:" />
+                android:text="Start Date:"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/startText"
@@ -47,12 +52,14 @@
                 android:ems="10"
                 android:focusable="false"
                 android:inputType="textPersonName"
-                android:text="Start Date" />
+                android:text="Start Date"
+                android:textSize="24sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="End Date:" />
+                android:text="End Date:"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/endText"
@@ -61,12 +68,14 @@
                 android:ems="10"
                 android:focusable="false"
                 android:inputType="textPersonName"
-                android:text="End Date" />
+                android:text="End Date"
+                android:textSize="24sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Course Status:" />
+                android:text="Course Status:"
+                android:textSize="20sp" />
 
             <Spinner
                 android:id="@+id/statusSpinner"
@@ -78,7 +87,8 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Course Instructor:" />
+                android:text="Course Instructor:"
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -101,62 +111,19 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Assessments:" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Spinner
-                    android:id="@+id/assessSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:id="@+id/addAssessBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:onClick="onAddAssess"
-                    android:text="Add Assessment" />
-
-                <Button
-                    android:id="@+id/newAssessBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:onClick="onNewAssess"
-                    android:text="New Assessment" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="308dp"
-                android:orientation="horizontal">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/selectAssessRecycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Notes" />
+                android:text="Notes"
+                android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/noteText"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="100dp"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Notes (optional)" />
+                android:gravity="start|top"
+                android:hint="Notes (optional)"
+                android:inputType="textMultiLine" />
 
             <Button
                 android:id="@+id/saveBtn"
