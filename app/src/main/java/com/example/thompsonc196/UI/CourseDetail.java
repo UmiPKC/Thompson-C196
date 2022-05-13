@@ -96,22 +96,24 @@ public class CourseDetail extends AppCompatActivity {
                 Long triggerStart = startDate.getTime();
                 Intent startNotifIntent = new Intent(CourseDetail.this, MyReceiver.class);
                 startNotifIntent.putExtra("key", startMessage);
-                PendingIntent startSender = PendingIntent.getBroadcast(CourseDetail.this, MainActivity.numAlert++, startNotifIntent, PendingIntent.FLAG_IMMUTABLE);
+                PendingIntent startSender = PendingIntent.getBroadcast(CourseDetail.this, MainActivity.numAlert++, startNotifIntent, PendingIntent.FLAG_UPDATE_CURRENT);
                 AlarmManager startAlarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 startAlarmManager.set(AlarmManager.RTC_WAKEUP, triggerStart, startSender);
 
-                Toast.makeText(this, "Start date notification has been set.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Start date notification has been set.", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.setEndNotif:
                 String endMessage = "Course " + title + " ends today.";
+                Long endLong = getIntent().getLongExtra("end", -1);
+                endDate = new Date(endLong);
                 Long triggerEnd = endDate.getTime();
                 Intent endNotifIntent = new Intent(CourseDetail.this, MyReceiver.class);
                 endNotifIntent.putExtra("key", endMessage);
-                PendingIntent endSender = PendingIntent.getBroadcast(CourseDetail.this, MainActivity.numAlert++, endNotifIntent, PendingIntent.FLAG_IMMUTABLE);
+                PendingIntent endSender = PendingIntent.getBroadcast(CourseDetail.this, MainActivity.numAlert++, endNotifIntent, PendingIntent.FLAG_UPDATE_CURRENT);
                 AlarmManager endAlarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                endAlarmManager.set(AlarmManager.RTC_WAKEUP, triggerEnd, endSender);
+                endAlarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerEnd, endSender);
 
-                Toast.makeText(this, "End date notification has been set.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "End date notification has been set.", Toast.LENGTH_LONG).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

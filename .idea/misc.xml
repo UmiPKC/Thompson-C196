@@ -4,6 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/drawable/ic_del_icon.xml" value="0.357" />
+        <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout-land/activity_assess_add.xml" value="0.31040564373897706" />
+        <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout-land/activity_assess_detail.xml" value="0.31040564373897706" />
+        <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout-land/activity_assess_list.xml" value="0.31040564373897706" />
+        <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout-land/activity_course_add.xml" value="0.31040564373897706" />
+        <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout-land/activity_course_detail.xml" value="0.31040564373897706" />
+        <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout-land/activity_course_list.xml" value="0.31040564373897706" />
+        <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout-land/activity_instructor_add.xml" value="0.31040564373897706" />
+        <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout-land/activity_main.xml" value="0.31040564373897706" />
+        <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout-land/activity_term_add.xml" value="0.31040564373897706" />
+        <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout-land/activity_term_detail.xml" value="0.31040564373897706" />
+        <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout-land/activity_term_list.xml" value="0.31040564373897706" />
         <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout/activity_assess_add.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout/activity_assess_detail.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout/activity_assess_list.xml" value="0.36666666666666664" />
@@ -11,6 +22,7 @@
         <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout/activity_course_detail.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout/activity_course_list.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout/activity_instructor_add.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout/activity_term_add.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout/activity_term_detail.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout/activity_term_list.xml" value="0.36666666666666664" />
@@ -19,6 +31,7 @@
         <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/layout/term_list_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/menu/action_bar_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/menu/term_action_bar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.357" />
         <entry key="..\:/Users/Umi/StudioProjects/Thompson-C196/app/src/main/res/xml/strings.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/layout/activity_assess_add.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_assess_detail.xml" value="0.35625" />

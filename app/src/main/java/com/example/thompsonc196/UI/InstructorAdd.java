@@ -53,6 +53,9 @@ public class InstructorAdd extends AppCompatActivity {
                 Instructor instructor = new Instructor(newID, name, phone, email);
                 repo.insert(instructor);
                 System.out.println(instructor);
+
+                finish();
+
             }
         });
     }

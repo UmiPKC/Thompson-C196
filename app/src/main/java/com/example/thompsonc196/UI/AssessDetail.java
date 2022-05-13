@@ -76,7 +76,7 @@ public class AssessDetail extends AppCompatActivity {
                 Long triggerStart = startDate.getTime();
                 Intent startNotifIntent = new Intent(AssessDetail.this, MyReceiver.class);
                 startNotifIntent.putExtra("key", startMessage);
-                PendingIntent startSender = PendingIntent.getBroadcast(AssessDetail.this, MainActivity.numAlert++, startNotifIntent, PendingIntent.FLAG_IMMUTABLE);
+                PendingIntent startSender = PendingIntent.getBroadcast(AssessDetail.this, MainActivity.numAlert++, startNotifIntent, PendingIntent.FLAG_UPDATE_CURRENT);
                 AlarmManager startAlarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 startAlarmManager.set(AlarmManager.RTC_WAKEUP, triggerStart, startSender);
 
@@ -88,7 +88,7 @@ public class AssessDetail extends AppCompatActivity {
                 Long triggerEnd = endDate.getTime();
                 Intent endNotifIntent = new Intent(AssessDetail.this, MyReceiver.class);
                 endNotifIntent.putExtra("key", endMessage);
-                PendingIntent endSender = PendingIntent.getBroadcast(AssessDetail.this, MainActivity.numAlert++, endNotifIntent, PendingIntent.FLAG_IMMUTABLE);
+                PendingIntent endSender = PendingIntent.getBroadcast(AssessDetail.this, MainActivity.numAlert++, endNotifIntent, PendingIntent.FLAG_UPDATE_CURRENT);
                 AlarmManager endAlarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 endAlarmManager.set(AlarmManager.RTC_WAKEUP, triggerEnd, endSender);
 

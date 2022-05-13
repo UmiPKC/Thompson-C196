@@ -22,7 +22,7 @@ public class MyReceiver extends BroadcastReceiver {
         Notification n = new NotificationCompat.Builder(context, channel_id)
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentText(intent.getStringExtra("key"))
-                .setContentTitle("NotificationTest").build();
+                .setContentTitle("Course Viewer").build();
         NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(notificationID++, n);
     }
