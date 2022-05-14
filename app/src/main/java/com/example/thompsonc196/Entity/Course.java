@@ -16,8 +16,8 @@ public class Course {
     private String courseStatus;
     private int instructorID;
     private String courseNotes;
-    private int termID; //presumably SQLite will generate term id
-    //private ArrayList notes; Use a list to store notes?
+    private int termID;
+
 
     public Course(int courseID, String courseTitle, Date courseStart, Date courseEnd, String courseStatus, int instructorID, String courseNotes, int termID) {
         this.courseID = courseID;
@@ -98,30 +98,5 @@ public class Course {
     public String toString() {
         return this.courseTitle;
     }
-    /*
-    public String getInstructorName() {
-        return instructorName;
-    }
 
-    public void setInstructorName(String instructorName) {
-        this.instructorName = instructorName;
-    }
-
-    public String getInstructorPhone() {
-        return instructorPhone;
-    }
-
-    public void setInstructorPhone(String instructorPhone) {
-        this.instructorPhone = instructorPhone;
-    }
-
-    public String getInstructorEmail() {
-        return instructorEmail;
-    }
-
-    public void setInstructorEmail(String instructorEmail) {
-        this.instructorEmail = instructorEmail;
-    }
-
-     */
 }

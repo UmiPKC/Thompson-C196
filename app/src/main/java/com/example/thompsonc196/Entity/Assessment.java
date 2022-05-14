@@ -76,19 +76,4 @@ public class Assessment {
         return this.assessTitle;
     }
 
-    /*public String getAssessStart() {
-        return assessStart;
-    }
-
-    public void setAssessStart(String assessStart) {
-        this.assessStart = assessStart;
-    }
-
-    public String getAssessEnd() {
-        return assessEnd;
-    }
-
-    public void setAssessEnd(String assessEnd) {
-        this.assessEnd = assessEnd;
-    } */
 }

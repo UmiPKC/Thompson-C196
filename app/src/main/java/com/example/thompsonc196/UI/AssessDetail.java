@@ -233,20 +233,6 @@ public class AssessDetail extends AppCompatActivity {
             }
         });
 
-        /**
-         * Delete button functionality
-         */
-        /*
-        delBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Assessment assessment = new Assessment(assessID, title, startDate, endDate, type, 0 );
-                repo.delete(assessment);
-            }
-        });
-
-         */
-
     }
 
     /**
